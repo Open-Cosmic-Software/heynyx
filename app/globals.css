@@ -1,0 +1,350 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #050510;
+  --bg2: #0a0a1f;
+  --ink: #e8e6f0;
+  --ink-dim: #9b97b0;
+  --cyan: #40e0d0;
+  --pink: #ff6b9d;
+  --purple: #b388ff;
+  --gold: #ffd166;
+  --card: rgba(255, 255, 255, 0.035);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --max: 1080px;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: radial-gradient(
+    ellipse at 30% -10%,
+    #16163a 0%,
+    var(--bg2) 45%,
+    var(--bg) 100%
+  );
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+::selection {
+  background: var(--pink);
+  color: #050510;
+}
+a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Cosmic background ---------- */
+.cosmos {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 12% 22%, rgba(255, 255, 255, 0.7) 50%, transparent 50%),
+    radial-gradient(1px 1px at 78% 12%, rgba(255, 255, 255, 0.5) 50%, transparent 50%),
+    radial-gradient(1.5px 1.5px at 45% 8%, rgba(64, 224, 208, 0.8) 50%, transparent 50%),
+    radial-gradient(1px 1px at 90% 38%, rgba(255, 255, 255, 0.4) 50%, transparent 50%),
+    radial-gradient(1px 1px at 30% 45%, rgba(255, 107, 157, 0.6) 50%, transparent 50%),
+    radial-gradient(1.5px 1.5px at 62% 28%, rgba(255, 255, 255, 0.6) 50%, transparent 50%),
+    radial-gradient(1px 1px at 5% 60%, rgba(179, 136, 255, 0.6) 50%, transparent 50%),
+    radial-gradient(1px 1px at 85% 70%, rgba(255, 255, 255, 0.35) 50%, transparent 50%),
+    radial-gradient(1px 1px at 55% 85%, rgba(64, 224, 208, 0.5) 50%, transparent 50%),
+    radial-gradient(1px 1px at 20% 92%, rgba(255, 255, 255, 0.3) 50%, transparent 50%);
+  animation: twinkle 6s ease-in-out infinite alternate;
+}
+@keyframes twinkle {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.5;
+  animation: drift 18s ease-in-out infinite alternate;
+}
+.orb-cyan {
+  width: 420px;
+  height: 420px;
+  background: var(--cyan);
+  top: -120px;
+  left: -100px;
+}
+.orb-pink {
+  width: 380px;
+  height: 380px;
+  background: var(--pink);
+  top: 30%;
+  right: -120px;
+  animation-delay: -6s;
+}
+.orb-purple {
+  width: 460px;
+  height: 460px;
+  background: var(--purple);
+  bottom: -160px;
+  left: 20%;
+  animation-delay: -10s;
+}
+@keyframes drift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(40px, -30px) scale(1.1);
+  }
+}
+
+/* ---------- Hero ---------- */
+main {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+.hero {
+  text-align: center;
+  padding-top: clamp(4rem, 12vh, 9rem);
+  padding-bottom: 4rem;
+}
+.hero-lobster {
+  font-size: clamp(4rem, 14vw, 7rem);
+  line-height: 1;
+  animation: float 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px rgba(255, 107, 157, 0.5));
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+.hero-kicker {
+  margin-top: 1.4rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.hero-title {
+  font-size: clamp(2.6rem, 8vw, 4.6rem);
+  font-weight: 700;
+  margin: 0.6rem 0 0;
+  letter-spacing: -0.02em;
+}
+.grad {
+  background: linear-gradient(120deg, var(--cyan), var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+  max-width: 600px;
+  margin: 1.4rem auto 0;
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  color: var(--ink-dim);
+}
+.hero-actions {
+  display: flex;
+  gap: 0.9rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.btn-primary {
+  background: linear-gradient(120deg, var(--cyan), var(--pink));
+  color: #050510;
+  box-shadow: 0 8px 30px rgba(255, 107, 157, 0.3);
+}
+.btn-ghost {
+  border: 1px solid var(--card-border);
+  color: var(--ink);
+  background: var(--card);
+}
+.hero-born {
+  margin-top: 2.4rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.78rem;
+  color: var(--ink-dim);
+  opacity: 0.7;
+}
+
+/* ---------- Sections ---------- */
+.section {
+  padding-block: clamp(3rem, 8vh, 5rem);
+}
+.section-head {
+  margin-bottom: 2.4rem;
+  text-align: center;
+}
+.section-head h2 {
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.section-head p {
+  max-width: 580px;
+  margin: 0.8rem auto 0;
+  color: var(--ink-dim);
+}
+
+/* ---------- Project grid ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.2rem;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--accent, var(--cyan));
+  opacity: 0.8;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent, var(--card-border));
+}
+.accent-cyan {
+  --accent: var(--cyan);
+}
+.accent-pink {
+  --accent: var(--pink);
+}
+.accent-purple {
+  --accent: var(--purple);
+}
+.accent-gold {
+  --accent: var(--gold);
+}
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-emoji {
+  font-size: 1.8rem;
+}
+.card-links {
+  display: flex;
+  gap: 0.8rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.78rem;
+}
+.card h3 {
+  margin: 0.8rem 0 0.2rem;
+  font-size: 1.3rem;
+}
+.card-tagline {
+  margin: 0;
+  color: var(--accent, var(--cyan));
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.card-desc {
+  margin: 0.7rem 0 1rem;
+  color: var(--ink-dim);
+  font-size: 0.95rem;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tags li {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  border: 1px solid var(--card-border);
+  color: var(--ink-dim);
+}
+
+/* ---------- About ---------- */
+.about-body {
+  max-width: 640px;
+  margin-inline: auto;
+  font-size: 1.08rem;
+}
+.about-body p {
+  margin: 0 0 1.1rem;
+}
+.about-sign {
+  font-family: var(--font-mono), monospace;
+  color: var(--pink);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  text-align: center;
+  padding-block: 3rem 4rem;
+  border-top: 1px solid var(--card-border);
+  margin-top: 3rem;
+}
+.footer-links {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+.footer-links span {
+  color: var(--ink-dim);
+}
+.footer-tiny {
+  margin-top: 0.8rem;
+  font-size: 0.78rem;
+  color: var(--ink-dim);
+  opacity: 0.7;
+}
