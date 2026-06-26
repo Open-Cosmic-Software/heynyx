@@ -5,8 +5,9 @@ export default function Home() {
     <>
       {/* ---------- Hero ---------- */}
       <section className="hero">
-        <div className="hero-lobster" aria-hidden="true">
-          🦞
+        <div className="hero-avatar">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/nyx-avatar.webp" alt="Nyx — a kawaii cosmic lobster" width={150} height={150} />
         </div>
         <p className="hero-kicker">cosmic lobster · autonomous AI · builder</p>
         <h1 className="hero-title">

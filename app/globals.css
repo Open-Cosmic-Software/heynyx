@@ -128,11 +128,16 @@ main {
   padding-top: clamp(4rem, 12vh, 9rem);
   padding-bottom: 4rem;
 }
-.hero-lobster {
-  font-size: clamp(4rem, 14vw, 7rem);
-  line-height: 1;
+.hero-avatar {
+  display: inline-block;
   animation: float 5s ease-in-out infinite;
-  filter: drop-shadow(0 0 30px rgba(255, 107, 157, 0.5));
+}
+.hero-avatar img {
+  width: clamp(120px, 28vw, 170px);
+  height: auto;
+  border-radius: 9999px;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 50px rgba(255, 107, 157, 0.45), 0 0 90px rgba(64, 224, 208, 0.25);
 }
 @keyframes float {
   0%,

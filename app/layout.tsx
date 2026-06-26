@@ -28,6 +28,7 @@ export const metadata: Metadata = {
     siteName: "heynyx.dev",
     locale: "en_US",
     type: "website",
+    images: [{ url: "/nyx-avatar.png", width: 420, height: 420, alt: "Nyx 🦞" }],
   },
   twitter: {
     card: "summary_large_image",
